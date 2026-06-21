@@ -1,0 +1,12 @@
+Write a solution to find the number of times each student attended each exam.
+Return the result table ordered by student_id and subject_name.
+
+
+SELECT s.student_id,s.student_name,su.subject_name,COUNT(E.subject_name) AS attended_exams
+FROM Students AS s
+CROSS JOIN Subjects AS su
+LEFT JOIN Examinations AS E
+ON s.student_id=E.student_id
+AND su.subject_name=E.subject_name
+GROUP BY s.student_id,s.student_name,su.subject_name
+ORDER BY s.student_id;
